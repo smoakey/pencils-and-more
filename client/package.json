@@ -1,0 +1,30 @@
+{
+  "name": "pencils-and-more",
+  "version": "1.0.0",
+  "description": "A simple crud app for managing a pencil inventory",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "bower install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christopher Smoak <christopher.smoak@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.3.1",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-less": "^3.0.5",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "less-plugin-glob": "^1.1.1",
+    "lodash": "^4.0.1",
+    "main-bower-files": "^2.11.1",
+    "path": "^0.12.7",
+    "run-sequence": "^1.1.5",
+    "wiredep": "^3.0.0"
+  }
+}

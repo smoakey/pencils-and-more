@@ -8,15 +8,20 @@ A simple crud app for managing a pencil inventory
 - PHP > 5.5.9
 - MySQL
 - Composer (https://getcomposer.org/)
+- Node > 4.x
+- NPM > 3.x
+
+
+## Downloading
+ - Clone Repo -> 
+	```git clone https://github.com/smoakey/pencils-and-more.git pencils-and-more```
 
 
 ## Installing the API
 
-- Clone Repo -> 
-	```git clone https://github.com/smoakey/pencils-and-more.git pencils-and-more```
 - Go to api folder -> 
 	```cd ./pencils-and-more/api```
-- Run -> 
+- Install dependencies -> 
 	```composer update```
 - Create configuration file named ".env" in the api folder root. Put the following contents in that file, editing the DB connection details for your MySQL connection: 
 ```ini
@@ -41,3 +46,14 @@ QUEUE_DRIVER=sync
 
 - Go to public directory -> ```cd ./public```
 - Serve applicaton -> ```php -S localhost:1234```
+
+
+## Installing the Client
+
+- Go to client folder -> ```cd ./pencils-and-more/client```
+- Install Dependencies -> ```npm install``` (this will install bower dependencies after npm is done)
+
+
+## Running the Client
+
+- Serve application ```gulp```
