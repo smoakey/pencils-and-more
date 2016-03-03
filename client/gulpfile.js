@@ -6,6 +6,7 @@
         del = require('del'),
         runSequence = require('run-sequence'),
         gulp = require('gulp'),
+        gulpUtil = require('gulp-util'),
         gulpConnect = require('gulp-connect'),
         gulpNgAnnotate = require('gulp-ng-annotate'),
         gulpConcat = require('gulp-concat'),
@@ -16,7 +17,8 @@
         gulpUglify = require('gulp-uglify'),
         mainBowerFiles = require('main-bower-files'),
         wiredep = require('wiredep'),
-        path = require('path');
+        path = require('path'),
+        gulpBabel = require('gulp-babel');
 
     gulp.task('default', function (cb) {
         runSequence('clean', 'build', 'connect', 'watch', cb);
@@ -67,8 +69,11 @@
                 'src/**/*.js'
             ])
             .pipe(gulpNgAnnotate())
+            .pipe(gulpBabel({
+                presets: ['es2015']
+            }))
+            .pipe(gulpUglify().on('error', gulpUtil.log))
             .pipe(gulpConcat('app.min.js'))
-            .pipe(gulpUglify())
             .pipe(gulp.dest('dist/js'));
     });
 
