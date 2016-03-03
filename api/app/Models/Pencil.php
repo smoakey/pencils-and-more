@@ -37,4 +37,41 @@ class Pencil extends Model
 	 * @var array
 	 */
 	protected $fillable = ['name', 'color', 'length'];
+
+	/**
+     * Add pencil votes to output.
+     *
+     * @var array
+     */
+    protected $appends = ['votes'];
+
+    /**
+     * Get votes for json output
+     * 
+     * @return collection Pencil Votes
+     */
+    public function getVotesAttribute()
+    {
+    	$votes = $this->votes()->get();
+
+    	$positive = $votes->sum(function ($vote) {
+    		return $vote->positive == 1;
+    	});
+
+    	$negative = $votes->sum(function ($vote) {
+    		return $vote->positive == 0;
+    	});
+
+    	return ['positive' => $positive, 'negative' => $negative];
+    }
+
+	/**
+	 * Get Pencil Votes
+	 * 
+	 * @return collection 
+	 */
+	public function votes()
+	{
+		return $this->morphMany('App\Models\Vote', 'voteable');
+	}
 }

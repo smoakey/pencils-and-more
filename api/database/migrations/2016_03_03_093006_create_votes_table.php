@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePencilVotesTable extends Migration
+class CreateVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class CreatePencilVotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pencil_votes', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pencil_id');
-            $table->boolean('up_vote');
+            $table->integer('voteable_id');
+            $table->string('voteable_type');
+            $table->boolean('positive');
         });
     }
 
@@ -26,6 +27,6 @@ class CreatePencilVotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pencil_votes'); 
+        Schema::dropIfExists('votes'); 
     }
 }

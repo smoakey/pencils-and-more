@@ -15,7 +15,7 @@ class EloquentPencilRepository implements PencilRepository
 	 */
 	public function getAll()
 	{
-		return Pencil::all()->toArray();
+		return Pencil::all();
 	}
 
 	/**
@@ -63,5 +63,21 @@ class EloquentPencilRepository implements PencilRepository
 	public function delete($id)
 	{
 		return Pencil::destroy($id);
+	}
+
+	/**
+	 * Vote for pencils
+	 * 
+	 * @param  int    $id           Pencil id
+	 * @param  int    $positiveVote Pencil vote
+	 * @return object               Pencil model
+	 */
+	public function vote($id, $positiveVote = 1)
+	{
+		$pencil = $this->getById($id);
+
+		$status = $pencil->votes()->create(['positive' => $positiveVote ? $positiveVote : 0]);
+
+		return response()->json($pencil);
 	}
 }

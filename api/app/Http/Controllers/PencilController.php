@@ -91,4 +91,16 @@ class PencilController extends BaseController
 
         return response()->json(['success' => true, 'status' => $status]);
     }
+
+    /**
+     * Vote on a Pencil
+     * 
+     * @param  object  $id       Request object
+     * @param  int     $id       Pencil id
+     * @return object            Pencil model
+     */
+    public function vote(Request $request, $id)
+    {
+        $this->pencilRepository->vote($id, $request->input('positive'));
+    }
 }
