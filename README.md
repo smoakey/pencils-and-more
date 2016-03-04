@@ -1,6 +1,6 @@
 # Pencils and More
 
-A simple crud app for managing a pencil inventory
+A simple crud app for managing a pencil inventory API built with the Lumen framework https://lumen.laravel.com, and Angular 1.5 for the client. 
 
 
 ## Requirements

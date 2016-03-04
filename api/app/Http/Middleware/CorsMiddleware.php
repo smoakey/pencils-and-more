@@ -9,14 +9,15 @@ class CorsMiddleware
     {
         $response = $next($request);
         
-        $response->header('Access-Control-Allow-Origin', $request->headers->get('origin'));
-        $response->header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD', true);
-        $response->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With', true);
+        $response->header('Access-Control-Allow-Origin', '*');
+        $response->header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
+        $response->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
 
         if ($request->getMethod() == 'OPTIONS') {
             $response->setStatusCode(200);
             $response->setContent(null);
         }
+        
         return $response;
     }
 }

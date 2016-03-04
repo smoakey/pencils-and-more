@@ -35,14 +35,14 @@
     gulp.task('build:html', function () {
         return gulp
             .src([
-                'src/**/*.html',
-                '!src/index.html'
+                'app/**/*.html',
+                '!app/index.html'
             ])
             .pipe(gulp.dest('dist'));
     });
 
     gulp.task('build:css', function () {
-        var lessStream = gulp.src('./src/less/master.less')
+        var lessStream = gulp.src('./app/styles/master.less')
             .pipe(gulpLess({
                 plugins: [gulpLessGlob]
             }))
@@ -58,15 +58,18 @@
     });
 
     gulp.task('build:fonts', function () {
-        return gulp.src('src/fonts/**/*')
+        return gulp.src([
+                'app/fonts/**/*',
+                'bower_components/bootstrap/fonts/**/*'
+            ])
             .pipe(gulp.dest('dist/fonts'));
     });
 
     gulp.task('build:js', function (cb) {
         return gulp.src([
-                'src/app.js',
-                'src/**/*-module.js',
-                'src/**/*.js'
+                'app/app.js',
+                'app/**/*.module.js',
+                'app/**/*.js'
             ])
             .pipe(gulpNgAnnotate())
             .pipe(gulpBabel({
@@ -87,7 +90,7 @@
     });
 
     gulp.task('build:bower:wiredep', function (cb) {
-        return gulp.src('src/index.html')
+        return gulp.src('app/index.html')
             .pipe(wiredep.stream({
                 fileTypes: {
                     html: {
@@ -117,7 +120,7 @@
 
     gulp.task('watch', function () {
         return gulp.watch([
-            'src/**/*'
+            'app/**/*'
         ], function (cb) {
             runSequence('clean', 'build', 'reload');
         });

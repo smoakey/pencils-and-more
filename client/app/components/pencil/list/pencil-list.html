@@ -1,0 +1,45 @@
+<button class="btn btn-primary" ui-sref="pencil.new">
+	<span class="glyphicon glyphicon-plus"></span> 
+	Create Pencil
+</button>
+
+<table class="table table-bordered pencil-list">
+	<tr>
+		<th>Name</th>
+		<th>Color</th>
+		<th>Votes</th>
+		<th>Actions</th>
+	</tr>
+
+	<tr ng-repeat="pencil in list.pencils">
+		<td width="50%">{{ pencil.name }}</td>
+		<td>{{ pencil.color }}</td>
+		<td>
+			<span class="glyphicon glyphicon-thumbs-up text-success" ng-if="pencil.currentRating > 0"></span>
+			<span class="glyphicon glyphicon-thumbs-down text-danger" ng-if="pencil.currentRating < 0"></span>
+			{{ pencil.currentRating | number }}
+		</td>
+		<td>
+			<button class="btn btn-sm btn-default" ui-sref="pencil.edit({id: pencil.id})">
+				<span class="glyphicon glyphicon-pencil"></span> 
+				Edit
+			</button>
+			<button class="btn btn-sm btn-danger">
+				<span class="glyphicon glyphicon-trash"></span> 
+				Delete
+			</button>
+		</td>
+	</tr>
+
+	<tr ng-if="list.pencils.length < 1">
+		<td colspan="4">
+			<div class="empty-state">
+				<span>No pencils yet :(</span>
+				<button class="btn btn-primary" ui-sref="pencil.new">
+					<span class="glyphicon glyphicon-plus"></span> 
+					Create Pencil
+				</button>
+			</div>
+		</td>
+	</tr>
+</ul>

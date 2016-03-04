@@ -55,8 +55,7 @@ class PencilController extends BaseController
     {
         $pencil = $this->pencilRepository->create([
             'name'   => $request->input('name'),
-            'color'  => $request->input('color'),
-            'length' => $request->input('length')
+            'color'  => $request->input('color')
         ]);
 
         return response()->json($pencil);
