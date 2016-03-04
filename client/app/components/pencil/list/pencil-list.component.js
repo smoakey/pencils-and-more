@@ -8,9 +8,11 @@
 		});
 
 	function PencilListCtrl($scope, PencilSvc) {
-		var vm = this;
+		let vm = this;
 
 		vm.pencils = [];
+
+		vm.handlePencilVote = handlePencilVote;
 
 		init();
 
@@ -21,7 +23,6 @@
 				.then(setPencilsOnController);
 			
 			$scope.$on('pencil.updated', updateOrAddPencilInList);
-			$scope.$on('pencil.delete', deletePencilFromList);
 		}
 
 		function fetchPencils() {
@@ -34,7 +35,9 @@
 
 		function calculatePencilVotes(pencils) {
 			return _.map(pencils, function (pencil) {
-				pencil.currentRating = _.get(pencil, 'votes.positive', 0) - _.get(pencil, 'votes.negative', 0);
+				console.log(pencil);
+				pencil.currentRating = pencil.votes.up - pencil.votes.down;
+				pencil.totalVotes = pencil.votes.up + pencil.votes.down;
 				return pencil;
 			});
 		}
@@ -54,8 +57,10 @@
 			vm.pencils = calculatePencilVotes(vm.pencils);
 		}
 
-		function deletePencilFromList(event, pencil) {
-
+		// put this logic in here. that way were just passing a callback to the 
+		// vote button directive and not tightly couple that directive to this one.
+		function handlePencilVote(pencil) {
+			updateOrAddPencilInList(null, pencil);
 		}
 	}
 })();

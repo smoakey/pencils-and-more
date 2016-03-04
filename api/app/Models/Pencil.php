@@ -54,15 +54,15 @@ class Pencil extends Model
     {
     	$votes = $this->votes()->get();
 
-    	$positive = $votes->sum(function ($vote) {
+    	$up = $votes->sum(function ($vote) {
     		return $vote->positive == 1;
     	});
 
-    	$negative = $votes->sum(function ($vote) {
+    	$down = $votes->sum(function ($vote) {
     		return $vote->positive == 0;
     	});
 
-    	return ['positive' => $positive, 'negative' => $negative];
+    	return ['up' => $up, 'down' => $down];
     }
 
 	/**

@@ -54,8 +54,7 @@ class PencilController extends BaseController
     public function store(Request $request)
     {
         $pencil = $this->pencilRepository->create([
-            'name'   => $request->input('name'),
-            'color'  => $request->input('color')
+            'name'   => $request->input('name')
         ]);
 
         return response()->json($pencil);
@@ -69,7 +68,7 @@ class PencilController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $status = $this->pencilRepository->update($id, $request->all('length'));
+        $status = $this->pencilRepository->update($id, $request->all());
         
         if ($status == 1) {
             return $this->show($id);
@@ -100,6 +99,8 @@ class PencilController extends BaseController
      */
     public function vote(Request $request, $id)
     {
-        $this->pencilRepository->vote($id, $request->input('positive'));
+        $pencil = $this->pencilRepository->vote($id, $request->input('direction'));
+
+        return response()->json($pencil);
     }
 }

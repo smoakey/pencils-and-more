@@ -1,33 +1,36 @@
-<button class="btn btn-primary" ui-sref="pencil.new">
-	<span class="glyphicon glyphicon-plus"></span> 
-	Create Pencil
-</button>
+<pencil-add-button></pencil-add-button>
 
 <table class="table table-bordered pencil-list">
 	<tr>
 		<th>Name</th>
-		<th>Color</th>
 		<th>Votes</th>
-		<th>Actions</th>
+		<th>Modify</th>
 	</tr>
-
-	<tr ng-repeat="pencil in list.pencils">
-		<td width="50%">{{ pencil.name }}</td>
-		<td>{{ pencil.color }}</td>
+	<tr ng-repeat="pencil in list.pencils | orderBy: '-totalVotes'">
+		<td>{{ pencil.name }}</td>
 		<td>
-			<span class="glyphicon glyphicon-thumbs-up text-success" ng-if="pencil.currentRating > 0"></span>
-			<span class="glyphicon glyphicon-thumbs-down text-danger" ng-if="pencil.currentRating < 0"></span>
-			{{ pencil.currentRating | number }}
+			<pencil-vote-button
+				direction="up"
+				pencil="pencil"
+				count="pencil.votes.up"
+				on-voted="list.handlePencilVote">
+			</pencil-vote-button>
+			/
+			<pencil-vote-button
+				direction="down"
+				pencil="pencil"
+				count="pencil.votes.down"
+				on-voted="list.handlePencilVote">
+			</pencil-vote-button>
 		</td>
-		<td>
-			<button class="btn btn-sm btn-default" ui-sref="pencil.edit({id: pencil.id})">
-				<span class="glyphicon glyphicon-pencil"></span> 
-				Edit
-			</button>
-			<button class="btn btn-sm btn-danger">
-				<span class="glyphicon glyphicon-trash"></span> 
-				Delete
-			</button>
+		<td width="22%">
+			<pencil-edit-button 
+				pencil="pencil">
+			</pencil-edit-button>
+			<pencil-delete-button 
+				pencil="pencil" 
+				all-pencils="list.pencils">
+			</pencil-delete-button>
 		</td>
 	</tr>
 
@@ -35,10 +38,6 @@
 		<td colspan="4">
 			<div class="empty-state">
 				<span>No pencils yet :(</span>
-				<button class="btn btn-primary" ui-sref="pencil.new">
-					<span class="glyphicon glyphicon-plus"></span> 
-					Create Pencil
-				</button>
 			</div>
 		</td>
 	</tr>

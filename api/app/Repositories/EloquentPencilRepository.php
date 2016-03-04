@@ -72,12 +72,12 @@ class EloquentPencilRepository implements PencilRepository
 	 * @param  int    $positiveVote Pencil vote
 	 * @return object               Pencil model
 	 */
-	public function vote($id, $positiveVote = 1)
+	public function vote($id, $direction = 'up')
 	{
 		$pencil = $this->getById($id);
 
-		$status = $pencil->votes()->create(['positive' => $positiveVote ? $positiveVote : 0]);
+		$status = $pencil->votes()->create(['positive' => $direction === 'up' ? 1 : 0]);
 
-		return response()->json($pencil);
+		return $pencil;
 	}
 }

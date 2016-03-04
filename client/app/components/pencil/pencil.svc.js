@@ -9,7 +9,9 @@
             getList: getList,
             getOne: getOne,
             create: create,
-            update: update
+            update: update,
+            destroy: destroy,
+            vote: vote
         };
 
         function getList() {
@@ -22,13 +24,28 @@
 
         function create(data) {
             return $http.post(`${apiUrl}/pencils`, $.param(data), {
-                headers: { 'Content-Type' : 'application/x-www-form-urlencoded' }
-            });
+                headers: {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(_.property('data'));
         }
 
         function update(id, data) {
             return $http.patch(`${apiUrl}/pencils/${id}`, data);
         }
         
+        function destroy(id) {
+            return $http.delete(`${apiUrl}/pencils/${id}`);
+        }
+
+        function vote(id, direction) {
+            return $http.post(`${apiUrl}/pencils/${id}/vote`, $.param({direction: direction}), {
+                headers: { 
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(_.property('data'));
+        }
     }
 }());

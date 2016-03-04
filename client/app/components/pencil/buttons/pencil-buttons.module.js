@@ -1,6 +1,6 @@
 (function() {
 	angular
-		.module('shared', [
+		.module('pencilButtons', [
 
 		]);
 })();

@@ -1,6 +1,7 @@
 (function() {
 	angular
 		.module('pencil', [
-			'pencilList'
+			'pencilList',
+			'pencilButtons'
 		]);
 })();

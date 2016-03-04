@@ -21,8 +21,6 @@ class CreatePencilsTable extends Migration
         Schema::create('pencils', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('color');
-            $table->integer('length');
             $table->timestamps();
             $table->softDeletes();
         });
