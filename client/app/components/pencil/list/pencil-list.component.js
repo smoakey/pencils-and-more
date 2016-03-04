@@ -10,8 +10,10 @@
 	function PencilListCtrl($scope, PencilSvc) {
 		let vm = this;
 
+		// vars
 		vm.pencils = [];
 
+		// methods
 		vm.handlePencilVote = handlePencilVote;
 
 		init();
@@ -22,6 +24,8 @@
 				.then(calculatePencilVotes)
 				.then(setPencilsOnController);
 			
+			// since the edit/create modal is a separate state we have no way to update the list
+			// inside the modal
 			$scope.$on('pencil.updated', updateOrAddPencilInList);
 		}
 
@@ -34,8 +38,9 @@
 		}
 
 		function calculatePencilVotes(pencils) {
+			// this allows sort by current vote standings -> total up minus total down
 			return _.map(pencils, function (pencil) {
-				pencil.totalVotes = pencil.votes.up + pencil.votes.down;
+				pencil.currentVote = pencil.votes.up - pencil.votes.down;
 				return pencil;
 			});
 		}
@@ -55,7 +60,7 @@
 			vm.pencils = calculatePencilVotes(vm.pencils);
 		}
 
-		// put this logic in here. that way were just passing a callback to the 
+		// Logic that handles updating the vote. that way were just passing a callback to the 
 		// vote button directive and not tightly couple that directive to this one.
 		function handlePencilVote(pencil) {
 			updateOrAddPencilInList(null, pencil);

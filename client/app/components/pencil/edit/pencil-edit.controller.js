@@ -4,7 +4,7 @@
 		.controller('PencilEditCtrl', PencilEditCtrl);
 
 	function PencilEditCtrl($rootScope, $stateParams, $state, $uibModalInstance, PencilSvc) {
-		var vm = this;
+		let vm = this;
 
 		vm.pencil   = {};
 		vm.saveFunc = 'create';

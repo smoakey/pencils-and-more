@@ -4,7 +4,7 @@
 		<th>Votes</th>
 		<th>Modify</th>
 	</tr>
-	<tr ng-repeat="pencil in list.pencils | orderBy: '-totalVotes'">
+	<tr ng-repeat="pencil in list.pencils | orderBy: '-currentVote'">
 		<td>{{ pencil.name }}</td>
 		<td>
 			<pencil-vote-button

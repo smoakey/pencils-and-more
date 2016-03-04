@@ -1,3 +1,6 @@
+// In a real world app each of these iteams would be separated into their own files to allow for 
+// additional things being added and separation of concerns/ease of finding.
+
 (function () {
     'use strict';
     angular
@@ -16,9 +19,7 @@
                 .state('pencil', {
                     url: '/pencils',
                     template:
-                        `<div class="new-pencil text-right">
-                            <pencil-add-button></pencil-add-button>
-                        </div>
+                        `<pencil-add-button></pencil-add-button>
                         <pencil-list></pencil-list>`,
                 })
                 .state('pencil.new', {
