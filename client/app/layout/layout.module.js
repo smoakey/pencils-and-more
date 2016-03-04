@@ -1,7 +1,7 @@
 (function() {
-	angular
-		.module('layout', [
-			'header',
-			'footer'
-		]);
+    angular
+        .module('layout', [
+            'header',
+            'footer'
+        ]);
 })();

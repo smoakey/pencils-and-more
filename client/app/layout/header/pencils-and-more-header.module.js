@@ -1,6 +1,6 @@
 (function() {
-	angular
-		.module('header', [
+    angular
+        .module('header', [
 
-		]);
+        ]);
 })();

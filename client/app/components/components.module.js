@@ -1,6 +1,6 @@
 (function() {
-	angular
-		.module('components', [
-			'pencil'
-		]);
+    angular
+        .module('components', [
+            'pencil'
+        ]);
 })();

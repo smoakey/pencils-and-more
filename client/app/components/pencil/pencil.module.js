@@ -1,8 +1,8 @@
 (function() {
-	angular
-		.module('pencil', [
-			'pencilList',
-			'pencilEdit',
-			'pencilButtons'
-		]);
+    angular
+        .module('pencil', [
+            'pencilList',
+            'pencilEdit',
+            'pencilButtons'
+        ]);
 })();

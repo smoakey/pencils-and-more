@@ -1,42 +1,42 @@
 <table class="table table-bordered pencil-list">
-	<tr>
-		<th>Name</th>
-		<th>Votes</th>
-		<th>Modify</th>
-	</tr>
-	<tr ng-repeat="pencil in list.pencils | orderBy: '-currentVote'">
-		<td>{{ pencil.name }}</td>
-		<td>
-			<pencil-vote-button
-				direction="up"
-				pencil="pencil"
-				count="pencil.votes.up"
-				on-voted="list.handlePencilVote">
-			</pencil-vote-button>
-			/
-			<pencil-vote-button
-				direction="down"
-				pencil="pencil"
-				count="pencil.votes.down"
-				on-voted="list.handlePencilVote">
-			</pencil-vote-button>
-		</td>
-		<td width="22%">
-			<pencil-edit-button 
-				pencil="pencil">
-			</pencil-edit-button>
-			<pencil-delete-button 
-				pencil="pencil" 
-				all-pencils="list.pencils">
-			</pencil-delete-button>
-		</td>
-	</tr>
+    <tr>
+        <th>Name</th>
+        <th>Votes</th>
+        <th>Modify</th>
+    </tr>
+    <tr ng-repeat="pencil in list.pencils | orderBy: '-currentVote'">
+        <td>{{ pencil.name }}</td>
+        <td>
+            <pencil-vote-button
+                direction="up"
+                pencil="pencil"
+                count="pencil.votes.up"
+                on-voted="list.handlePencilVote">
+            </pencil-vote-button>
+            /
+            <pencil-vote-button
+                direction="down"
+                pencil="pencil"
+                count="pencil.votes.down"
+                on-voted="list.handlePencilVote">
+            </pencil-vote-button>
+        </td>
+        <td width="22%">
+            <pencil-edit-button 
+                pencil="pencil">
+            </pencil-edit-button>
+            <pencil-delete-button 
+                pencil="pencil" 
+                all-pencils="list.pencils">
+            </pencil-delete-button>
+        </td>
+    </tr>
 
-	<tr ng-if="list.pencils.length < 1">
-		<td colspan="4">
-			<div class="empty-state">
-				<span>No pencils yet :(</span>
-			</div>
-		</td>
-	</tr>
+    <tr ng-if="list.pencils.length < 1">
+        <td colspan="4">
+            <div class="empty-state">
+                <span>No pencils yet :(</span>
+            </div>
+        </td>
+    </tr>
 </ul>

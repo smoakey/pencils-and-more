@@ -1,6 +1,6 @@
 (function() {
-	angular
-		.module('footer', [
+    angular
+        .module('footer', [
 
-		]);
+        ]);
 })();
