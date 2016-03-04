@@ -50,10 +50,14 @@ QUEUE_DRIVER=sync
 
 ## Installing the Client
 
-- Go to client folder -> ```cd ./pencils-and-more/client```
+- Go to client folder (open a new terminal tab or window) -> ```cd ./pencils-and-more/client```
 - Install Dependencies -> ```npm install``` (this will install bower dependencies after npm is done)
 
 
 ## Running the Client
 
 - Serve application ```gulp```
+
+## Using the Client
+
+- The client is served on http://localhost:1111 & knows that the API is being hosted on http://localhost:1234
