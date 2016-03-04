@@ -2,6 +2,7 @@
 	angular
 		.module('pencil', [
 			'pencilList',
+			'pencilEdit',
 			'pencilButtons'
 		]);
 })();

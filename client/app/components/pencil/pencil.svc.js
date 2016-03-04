@@ -23,16 +23,12 @@
         }
 
         function create(data) {
-            return $http.post(`${apiUrl}/pencils`, $.param(data), {
-                headers: {
-                    'Content-Type' : 'application/x-www-form-urlencoded'
-                }
-            })
-            .then(_.property('data'));
+            return $http.post(`${apiUrl}/pencils`, $.param(data)).then(_.property('data'));
         }
 
         function update(id, data) {
-            return $http.patch(`${apiUrl}/pencils/${id}`, data);
+            return $http.patch(`${apiUrl}/pencils/${id}`, data)
+                .then(_.property('data'));
         }
         
         function destroy(id) {
@@ -40,12 +36,7 @@
         }
 
         function vote(id, direction) {
-            return $http.post(`${apiUrl}/pencils/${id}/vote`, $.param({direction: direction}), {
-                headers: { 
-                    'Content-Type' : 'application/x-www-form-urlencoded'
-                }
-            })
-            .then(_.property('data'));
+            return $http.post(`${apiUrl}/pencils/${id}/vote`, $.param({direction: direction})).then(_.property('data'));
         }
     }
 }());

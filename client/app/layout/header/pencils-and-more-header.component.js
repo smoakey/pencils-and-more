@@ -1,23 +1,27 @@
-// //import PencilsAndMoreHeader from './pencils-and-more-header.class';
+(function() {
+	let templateString =
+		`<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<span class="glyphicon glyphicon-pencil text-info"></span> Pencils and More
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<p class="navbar-text navbar-right">
+						Signed in as <a href="" ng-click="header.welcome(header.name)">{{ header.name }}</a>
+					</p>
+				</div>
+			</div>
+		</nav>`;
 
-// (function() {
-// 	angular
-// 		.module('pencilsAndMoreHeader')
-// 		.component('pencilsAndMoreHeader', {
-// 			bindings: PencilsAndMoreHeader.bindings,
-// 			controllerAs: 'header',
-// 			template: PencilsAndMoreHeader.template,
-// 			controller: PencilsAndMoreHeaderCtrl
-// 		});
-
-// 	function PencilsAndMoreHeaderCtrl() {
-// 		var vm = this;
-
-// 		vm.welcome = welcome;
-
-// 		function welcome(name) {
-// 			alert(`Hi there ${name}!`);
-// 		}
-// 	}
-
-// })();
+	angular
+		.module('header')
+		.component('pencilsAndMoreHeader', {
+			bindings: {
+				name: '@'
+			},
+			template: templateString,
+			controllerAs: 'header'
+		});
+})();

@@ -1,6 +1,6 @@
 (function() {
 	angular
-		.module('pencilList')
+		.module('pencilEdit')
 		.controller('PencilEditCtrl', PencilEditCtrl);
 
 	function PencilEditCtrl($rootScope, $stateParams, $state, $uibModalInstance, PencilSvc) {

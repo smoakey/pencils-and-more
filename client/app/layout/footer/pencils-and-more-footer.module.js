@@ -1,6 +1,6 @@
 (function() {
 	angular
-		.module('pencilEdit', [
+		.module('footer', [
 
 		]);
 })();

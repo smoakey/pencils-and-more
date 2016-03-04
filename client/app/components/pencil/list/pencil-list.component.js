@@ -35,8 +35,6 @@
 
 		function calculatePencilVotes(pencils) {
 			return _.map(pencils, function (pencil) {
-				console.log(pencil);
-				pencil.currentRating = pencil.votes.up - pencil.votes.down;
 				pencil.totalVotes = pencil.votes.up + pencil.votes.down;
 				return pencil;
 			});
