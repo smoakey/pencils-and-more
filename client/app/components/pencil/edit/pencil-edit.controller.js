@@ -6,10 +6,12 @@
     function PencilEditCtrl($rootScope, $stateParams, $state, $uibModalInstance, PencilSvc) {
         let vm = this;
 
+        // vars
         vm.pencil   = {};
         vm.saveFunc = 'create';
         vm.title    = 'Create Pencil';
 
+        // methods
         vm.save   = save;
         vm.create = create;
         vm.update = update;
