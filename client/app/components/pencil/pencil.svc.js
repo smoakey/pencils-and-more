@@ -27,8 +27,7 @@
         }
 
         function update(id, data) {
-            return $http.patch(`${apiUrl}/pencils/${id}`, data)
-                .then(_.property('data'));
+            return $http.patch(`${apiUrl}/pencils/${id}`, data).then(_.property('data'));
         }
         
         function destroy(id) {
