@@ -23,6 +23,7 @@
     function PencilVoteButtonCtrl(PencilSvc) {
         let vm = this;
 
+        // methods
         vm.vote = vote;
 
         function vote() {

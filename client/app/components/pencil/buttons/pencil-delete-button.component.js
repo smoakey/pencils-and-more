@@ -22,8 +22,10 @@
     function PencilDeleteButtonCtrl($timeout, PencilSvc) {
         let vm = this;
 
+        // vars
         vm.clicked = false;
 
+        // methods
         vm.remove        = remove;
         vm.confirmRemove = confirmRemove;
 
